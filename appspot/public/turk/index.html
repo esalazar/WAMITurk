@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<body>
+<div id="code">
+	<h3>Please enter the current HIT number from mechanical turk.</h3>
+	<input type="text" name="turk_code" id="turk_code"></input>
+	<input type="submit" value="Go" onclick="insertCode()"></input>
+</div>
+<form id="mturk_form" method="POST">
+<input type="hidden" id="assignmentId" name="assignmentId" />
+
+
+
+
+<!-- If using the Amazon Mechanical Turk web-interface, click "Edit
+HTML Source" button and replace their code with the code between
+the ------s below.  Change the "recordHIT" urls below to their full
+hosted paths (e.g. https://NAME.appspot.com/turk/recordHIT.js).  There
+is no need to change the external interface when using the
+ExternalQuestion.
+-->
+
+<!------------------------------------------------------------------>
+<style type="text/css">@import url(recordHIT.css);</style>
+<script type="text/javascript" src="recordHIT.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<div id="code_repeat" class="center"><h3>Your code is <input id="wsession" /></h3></div>
+<script>
+  if (typeof WamiHooks == 'undefined') {
+	displayTurk();
+  }
+  else {
+	displayCode();
+  }
+  
+  function insertCode() {
+	if (document.getElementById('turk_code').value != "") {
+		displayTurk();
+	}
+	else {
+		alert("Please enter a HIT code.");
+	}
+  }
+  
+  function displayCode() {
+	document.getElementById("mturk_form").style.display = "none";
+	document.getElementById("code").style.display = "";
+  }
+  
+  function displayTurk() {
+	document.getElementById("mturk_form").style.display = "";
+	document.getElementById("code").style.display = "none";
+	
+	if (typeof WamiHooks == 'undefined') {
+		document.getElementById("code_repeat").style.display = "";
+	}
+	else {
+		document.getElementById("code_repeat").style.display = "none";
+	}
+	
+	$.ajax({url:"/hit?hit=" + document.getElementById('turk_code').value, success:function(result){
+		startWAMI(result);
+	}});
+  }
+  
+  function startWAMI(prompts) {
+	var wsessionid = Wami.RecordHIT.create(prompts);
+	document.getElementById('wsession').value = wsessionid;
+  }
+  
+  function showRefresh() {
+	document.getElementById("refresh_button").style.display = "";
+  }
+</script>
+<noscript>You do not have JavaScript.  Do not attempt this HIT.</noscript>
+<!------------------------------------------------------------------>
+
+
+<div id="refresh_button" style="display: none;"><input type="submit" id="submitButton" value="Submit" onSubmit="window.location.reload();" style="display: none;" /></div>
+<p><input type="submit" id="submitButton" value="Submit" disabled="disabled" style="display: none;" /></p>
+</form>
+</body>
+</html>

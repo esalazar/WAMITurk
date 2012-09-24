@@ -1,0 +1,17 @@
+<h1 style="text-align: center; "><img alt="sls" src="http://wami.csail.mit.edu/images/sls.png" /></h1>
+<h1 style="text-align: center; ">MIT WAMI Speech Collection</h1>
+<h3 style="text-align: center; ">We are attempting to figure out the distribution of mobile phones among Turk users to help us improve speech recognition. To learn more visit wami.csail.mit.edu.</h3>
+<p>&nbsp;</p>
+<h2 style="text-align: left; ">Requirements</h2>
+<p>You need an Android phone with version 2.1+ and an internet connection. If you don't have this phone please email us at wami.toolkit@gmail.com with the phone you wish we can support so you can start attempting our HITs.</p>
+<h2 style="text-align: left; ">Directions</h2>
+<p>Please search and download the WAMI application from the Android market by searching for &quot;MIT WAMI&quot;. You will be asked to enter the current HIT number <b><span id="hit_number" name="hit_number">HIT</span></b>. <b>MAKE SURE YOU PUT THE CORRECT HIT NUMBER OR YOU WILL NOT BE PAID!</b> You will be asked to say 10 phrases (they might not all be gramatically correct, but that is ok say them anyways). When you are done go on to the next HIT. Unintelligible speech will not be rewarded. We can determine who did actually did the tasks on the Android phone and will punish people who submit and don't do them.</p>
+<center><b>Your HIT number is: </b><input type="text" name="Code" id="Code" /></center>
+<h2 style="text-align: left; ">Problems</h2>
+<p>If your phone is not supported or you have any problems (e.g. audio, web page not loading, etc.), please email us at <b>wami.toolkit@gmail.com</b> with your problem or phone that you would like to do the HIT with.</p>
+<script>
+	var hit = "${hit}";
+	document.getElementById("hit_number").innerHTML = hit;
+	document.getElementById("Code").innerHTML = hit;
+	document.getElementById("Code").value = hit;
+</script>

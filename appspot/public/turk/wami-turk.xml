@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This is just a Google gadget to toss an example onto the code.google.com page. -->
+<Module>
+  <ModulePrefs title="Wami Turk Task Example"
+               author="Ian McGraw"
+               author_email="wami-toolkit@csail.mit.edu"
+               description="Google App Engine hosted Amazon Mechanical Turk task for audio collection.." />
+  <Content type="url" href="https://wami-recorder.appspot.com/turk/index.html"/>
+</Module>

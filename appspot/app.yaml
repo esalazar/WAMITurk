@@ -1,0 +1,28 @@
+application: wamimobile
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /crossdomain.xml
+  mime_type: text/xml
+  static_files: public/crossdomain.xml
+  upload: public/crossdomain.xml
+
+- url: /audio
+  script: python/sessions.py
+
+- url: /hit
+  script: python/hit.py
+
+- url: /stat
+  script: python/stat.py
+
+- url: /client
+  static_dir: public/client
+
+- url: /turk
+  static_dir: public/turk
+
+builtins:
+- remote_api: on
